@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="An overly pink, unique layout calculator and tip calculator." />
+    <title>The Pink Calculator</title>
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <main class="calculator-container">
+      <header>
+        <h1 class="app-title">The Pink Calculator</h1>
+      </header>
+
+      <section class="display-section">
+        <input type="text" id="calc-display" class="calc-display" readonly value="0" aria-label="Calculator display" />
+      </section>
+
+      <section class="controls-section">
+        <!-- Custom layout: two rows for numbers 0-4 and 5-9 -->
+        <div class="keypad-numbers">
+          <div class="number-row">
+            <button id="btn-num-0" class="btn-pink btn-num">0</button>
+            <button id="btn-num-1" class="btn-pink btn-num">1</button>
+            <button id="btn-num-2" class="btn-pink btn-num">2</button>
+            <button id="btn-num-3" class="btn-pink btn-num">3</button>
+            <button id="btn-num-4" class="btn-pink btn-num">4</button>
+          </div>
+          <div class="number-row">
+            <button id="btn-num-5" class="btn-pink btn-num">5</button>
+            <button id="btn-num-6" class="btn-pink btn-num">6</button>
+            <button id="btn-num-7" class="btn-pink btn-num">7</button>
+            <button id="btn-num-8" class="btn-pink btn-num">8</button>
+            <button id="btn-num-9" class="btn-pink btn-num">9</button>
+          </div>
+        </div>
+
+        <div class="keypad-operators">
+          <button id="btn-op-add" class="btn-pink btn-op">+</button>
+          <button id="btn-op-sub" class="btn-pink btn-op">-</button>
+          <button id="btn-op-mul" class="btn-pink btn-op">×</button>
+          <button id="btn-op-div" class="btn-pink btn-op">÷</button>
+          <button id="btn-op-clear" class="btn-pink btn-op">C</button>
+          <button id="btn-op-equal" class="btn-pink btn-op">=</button>
+        </div>
+
+        <div class="tips-container">
+          <h2>Tip Calculator</h2>
+          <p class="tips-instructions">Tap to calculate tip. Long press to customize percentage.</p>
+          <div class="tip-buttons">
+            <button id="btn-tip-1" class="btn-pink btn-tip" data-default="15">15%</button>
+            <button id="btn-tip-2" class="btn-pink btn-tip" data-default="20">20%</button>
+            <button id="btn-tip-3" class="btn-pink btn-tip" data-default="25">25%</button>
+          </div>
+          <div class="tip-result">
+            <span id="tip-amount-label">Tip:</span>
+            <span id="tip-amount-value">$0.00</span>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
