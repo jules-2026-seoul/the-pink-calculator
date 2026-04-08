@@ -209,6 +209,11 @@ tipButtons.forEach((btn, index) => {
       calculateTip(parseFloat(btn.dataset.tip));
     }
   });
+  btn.addEventListener('click', (e) => {
+    if (!isEditing) {
+      calculateTip(parseFloat(btn.dataset.tip));
+    }
+  });
   btn.addEventListener('pointerleave', cancelTimer);
 });
 
