@@ -18,6 +18,7 @@ This repository is designed to demonstrate Jules' accessibility and usability an
 - **Unconventional Layout**: Features a non-standard keypad layout with numbers arranged in two rows (0-4 and 5-9) rather than the traditional grid, creating intentional cognitive friction.
 - **Interactive Tip Calculator**: Supports calculating standard tip percentages (15%, 20%, 25%) on the current display value.
 - **Hidden Customizable Tips**: Allows customizing tip percentages via long-press gestures. This capability is intentionally completely undocumented in the UI to introduce a discoverability and usability issue for Jules to analyze.
+- **Sassy LLM Responses**: Integrates with the [Sassy Commenter API](https://github.com/jules-2026-seoul/the-sassy-commenter) to display witty, pink-themed toast notifications using Gemini whenever a calculation is completed.
 
 ## Tech Stack
 
