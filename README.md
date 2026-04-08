@@ -2,6 +2,8 @@
 
 A quirky, highly styled, and intentionally "barely readable" pink-on-pink calculator web application built to demonstrate Jules' new features for Google's 2026 BugBash session in Seoul.
 
+![The Pink Calculator UI](./docs/screenshot.png)
+
 ## Purpose
 
 This repository is designed to demonstrate Jules' accessibility and usability analysis features for the Google 2026 BugBash session in Seoul. 
