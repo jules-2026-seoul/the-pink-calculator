@@ -116,18 +116,45 @@ tipButtons.forEach((btn, index) => {
   }
 
   let pressTimer;
+  let isEditing = false;
 
-  // Setup long press for customization
+  // Setup long press for inline customization
   btn.addEventListener('pointerdown', (e) => {
+    if (isEditing) return;
     pressTimer = setTimeout(() => {
-      const newTip = prompt('Enter new tip percentage:', btn.dataset.tip);
-      if (newTip !== null && !isNaN(newTip) && newTip.trim() !== '') {
-        const validTip = parseFloat(newTip);
-        btn.dataset.tip = validTip;
-        btn.textContent = `${validTip}%`;
-        localStorage.setItem(key, validTip);
-        calculateTip(validTip);
-      }
+      isEditing = true;
+      const currentTip = btn.dataset.tip;
+      const input = document.createElement('input');
+      input.type = 'number';
+      input.value = currentTip;
+      input.className = 'inline-tip-input';
+
+      btn.textContent = '';
+      btn.appendChild(input);
+      input.focus();
+      input.select();
+
+      const saveVal = () => {
+        const newTip = input.value;
+        if (newTip !== null && !isNaN(newTip) && newTip.trim() !== '') {
+          const validTip = parseFloat(newTip);
+          btn.dataset.tip = validTip;
+          btn.textContent = `${validTip}%`;
+          localStorage.setItem(key, validTip);
+          calculateTip(validTip);
+        } else {
+          btn.textContent = `${btn.dataset.tip}%`;
+        }
+        // Small timeout to prevent immediate pointerup click handling
+        setTimeout(() => { isEditing = false; }, 100);
+      };
+
+      input.addEventListener('blur', saveVal);
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          saveVal();
+        }
+      });
     }, 600);
   });
 
@@ -137,8 +164,9 @@ tipButtons.forEach((btn, index) => {
 
   btn.addEventListener('pointerup', (e) => {
     cancelTimer();
-    // Only trigger normal click if it wasn't a long press
-    calculateTip(parseFloat(btn.dataset.tip));
+    if (!isEditing) {
+      calculateTip(parseFloat(btn.dataset.tip));
+    }
   });
   btn.addEventListener('pointerleave', cancelTimer);
 });
