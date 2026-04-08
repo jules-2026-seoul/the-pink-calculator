@@ -17,7 +17,7 @@ This repository is designed to demonstrate Jules' accessibility and usability an
 - **Intentional Low Contrast**: Uses an excessively pink-on-pink color palette that is deliberately difficult to read and borderline annoying, demonstrating low contrast and visual fatigue issues.
 - **Unconventional Layout**: Features a non-standard keypad layout with numbers arranged in two rows (0-4 and 5-9) rather than the traditional grid, creating intentional cognitive friction.
 - **Interactive Tip Calculator**: Supports calculating standard tip percentages (15%, 20%, 25%) on the current display value.
-- **Customizable Tips**: Allows customizing tip percentages via long-press gestures. Custom values are persisted locally using `localStorage`.
+- **Hidden Customizable Tips**: Allows customizing tip percentages via long-press gestures. This capability is intentionally completely undocumented in the UI (acting as a hidden easter egg) to introduce a discoverability and usability issue for Jules to analyze. Custom values are persisted locally using `localStorage`.
 
 ## Tech Stack
 
