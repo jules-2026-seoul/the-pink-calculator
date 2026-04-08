@@ -83,19 +83,53 @@ if (clearBtn) {
   });
 }
 
+// Handle dot
+const dotBtn = document.getElementById('btn-op-dot');
+if (dotBtn) {
+  dotBtn.addEventListener('click', () => {
+    if (waitingForSecondOperand) {
+      displayValue = '0.';
+      waitingForSecondOperand = false;
+    } else if (!displayValue.includes('.')) {
+      displayValue += '.';
+    }
+    updateDisplay();
+  });
+}
+
+// Handle backspace
+const backspaceBtn = document.getElementById('btn-op-backspace');
+if (backspaceBtn) {
+  backspaceBtn.addEventListener('click', () => {
+    if (waitingForSecondOperand) return;
+    if (displayValue.length > 1) {
+      displayValue = displayValue.slice(0, -1);
+    } else {
+      displayValue = '0';
+    }
+    updateDisplay();
+  });
+}
+
 function performCalculation(op, a, b) {
+  let res;
   switch (op) {
     case '+':
-      return a + b;
+      res = a + b;
+      break;
     case '-':
-      return a - b;
+      res = a - b;
+      break;
     case '*':
-      return a * b;
+      res = a * b;
+      break;
     case '/':
-      return b === 0 ? 0 : a / b;
+      res = b === 0 ? 0 : a / b;
+      break;
     default:
-      return b;
+      res = b;
   }
+  return Math.round(res * 100000000) / 100000000;
 }
 
 // Tip functionality with long press and LocalStorage customization
@@ -136,12 +170,16 @@ tipButtons.forEach((btn, index) => {
 
       const saveVal = () => {
         const newTip = input.value;
-        if (newTip !== null && !isNaN(newTip) && newTip.trim() !== '') {
+        if (newTip !== null && newTip.trim() !== '' && !isNaN(newTip)) {
           const validTip = parseFloat(newTip);
-          btn.dataset.tip = validTip;
-          btn.textContent = `${validTip}%`;
-          localStorage.setItem(key, validTip);
-          calculateTip(validTip);
+          if (validTip >= 0) {
+            btn.dataset.tip = validTip;
+            btn.textContent = `${validTip}%`;
+            localStorage.setItem(key, validTip);
+            calculateTip(validTip);
+          } else {
+            btn.textContent = `${btn.dataset.tip}%`;
+          }
         } else {
           btn.textContent = `${btn.dataset.tip}%`;
         }
