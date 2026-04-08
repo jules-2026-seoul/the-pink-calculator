@@ -61,6 +61,8 @@ if (equalBtn) {
     if (operator === null || waitingForSecondOperand) return;
 
     const inputValue = parseFloat(displayValue);
+    const oldFirst = firstOperand;
+    const currentOp = operator;
     const result = performCalculation(operator, firstOperand, inputValue);
 
     displayValue = String(result);
@@ -68,6 +70,7 @@ if (equalBtn) {
     operator = null;
     waitingForSecondOperand = true;
     updateDisplay();
+    fetchSassyResponse(`${oldFirst} ${currentOp} ${inputValue}`, result);
   });
 }
 
@@ -214,5 +217,40 @@ function calculateTip(percentage) {
   if (!isNaN(currentVal)) {
     const tip = (currentVal * percentage) / 100;
     tipAmountValue.textContent = `$${tip.toFixed(2)}`;
+    fetchSassyResponse(`${currentVal} tip ${percentage}%`, tip.toFixed(2));
   }
 }
+
+async function fetchSassyResponse(expression, result) {
+  let toast = document.getElementById('sassy-toast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'sassy-toast';
+    toast.className = 'sassy-toast';
+    const displayContainer = document.querySelector('.calculator-display-wrapper') || document.querySelector('.display-container') || document.body;
+    displayContainer.appendChild(toast);
+  }
+
+  try {
+    const res = await fetch('http://localhost:8000/attitude', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ expression: String(expression), result: String(result) })
+    });
+    const data = await res.json();
+    showToast(data.response || "Math is hard. You're doing great. 💅");
+  } catch (e) {
+    console.warn('Sassy API failed, using local fallback.', e);
+    showToast("Math is hard. You're doing great. 💅");
+  }
+}
+
+function showToast(msg) {
+  const toast = document.getElementById('sassy-toast');
+  if (toast) {
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 4000);
+  }
+}
+
