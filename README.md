@@ -4,7 +4,11 @@ A quirky, highly styled, and intentionally "barely readable" pink-on-pink calcul
 
 ## Purpose
 
-This repository serves as a test bed for Jules' accessibility and usability detection capabilities. It deliberately employs low-contrast aesthetics, unconventional layouts, and borderline annoying styling choices to showcase how Jules can identify these problems and recommend product improvements.
+This repository is designed to demonstrate Jules' accessibility and usability analysis features for the Google 2026 BugBash session in Seoul. 
+
+> [!NOTE]
+> **Demonstration of Feature vs. Capability**
+> The presence of this README explicitly documenting the repository's deliberate design flaws (such as low contrast, pink-on-pink aesthetics, and non-standard layouts) assists Jules in locating and categorizing these problems. Consequently, this repository serves as a guided demonstration of Jules' analysis features rather than an assessment of its ability to autonomously discover issues in an undocumented environment.
 
 ## Features
 
