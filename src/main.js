@@ -127,14 +127,7 @@ tipButtons.forEach((btn, index) => {
       const input = document.createElement('input');
       input.type = 'number';
       input.value = currentTip;
-      input.style.width = '100%';
-      input.style.height = '100%';
-      input.style.background = 'transparent';
-      input.style.border = 'none';
-      input.style.color = 'inherit';
-      input.style.font = 'inherit';
-      input.style.textAlign = 'center';
-      input.style.outline = 'none';
+      input.className = 'inline-tip-input';
 
       btn.textContent = '';
       btn.appendChild(input);
