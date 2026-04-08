@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap');
+
+:root {
+  --pink-bg: hsl(330, 100%, 85%);
+  --pink-container: hsl(330, 100%, 78%);
+  --pink-button: hsl(330, 100%, 70%);
+  --pink-button-hover: hsl(330, 100%, 65%);
+  --pink-text: hsl(330, 100%, 55%);
+  --pink-accent: hsl(330, 100%, 50%);
+  --pink-shadow: hsl(330, 100%, 40%, 0.3);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background: var(--pink-bg);
+  color: var(--pink-text);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.calculator-container {
+  background: linear-gradient(135deg, var(--pink-container), var(--pink-bg));
+  border-radius: 24px;
+  padding: 2rem;
+  box-shadow: 0 10px 30px var(--pink-shadow),
+              inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  max-width: 420px;
+  width: 100%;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--pink-button);
+}
+
+.app-title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  text-shadow: 1px 1px 2px var(--pink-accent);
+  letter-spacing: -0.5px;
+}
+
+.display-section {
+  margin-bottom: 1.5rem;
+}
+
+.calc-display {
+  width: 100%;
+  background: var(--pink-button);
+  border: 2px solid var(--pink-accent);
+  border-radius: 12px;
+  padding: 1rem;
+  font-size: 2.5rem;
+  text-align: right;
+  color: var(--pink-text);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  box-shadow: inset 0 4px 6px var(--pink-shadow);
+  outline: none;
+}
+
+.controls-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.keypad-numbers {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.number-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.btn-pink {
+  flex: 1;
+  padding: 1rem 0;
+  font-size: 1.5rem;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  background: linear-gradient(145deg, var(--pink-button), var(--pink-container));
+  border: 1px solid var(--pink-accent);
+  border-radius: 12px;
+  color: var(--pink-text);
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 4px 4px 10px var(--pink-shadow),
+              -4px -4px 10px rgba(255, 255, 255, 0.5);
+}
+
+.btn-pink:hover {
+  background: var(--pink-button-hover);
+  transform: translateY(-2px);
+  box-shadow: 6px 6px 12px var(--pink-shadow),
+              -6px -6px 12px rgba(255, 255, 255, 0.6);
+}
+
+.btn-pink:active {
+  transform: translateY(0);
+  box-shadow: inset 4px 4px 8px var(--pink-shadow);
+}
+
+.keypad-operators {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.5rem;
+}
+
+.tips-container {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid var(--pink-button);
+  margin-top: 1rem;
+}
+
+.tips-container h2 {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+}
+
+.tips-instructions {
+  font-size: 0.85rem;
+  opacity: 0.8;
+  margin-bottom: 1rem;
+}
+
+.tip-buttons {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.btn-tip {
+  font-size: 1.1rem;
+  padding: 0.8rem 0;
+}
+
+.tip-result {
+  font-size: 1.5rem;
+  font-weight: 700;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--pink-button);
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  border: 1px dashed var(--pink-accent);
+}
