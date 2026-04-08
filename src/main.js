@@ -205,9 +205,6 @@ tipButtons.forEach((btn, index) => {
 
   btn.addEventListener('pointerup', (e) => {
     cancelTimer();
-    if (!isEditing) {
-      calculateTip(parseFloat(btn.dataset.tip));
-    }
   });
   btn.addEventListener('click', (e) => {
     if (!isEditing) {
